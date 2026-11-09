@@ -809,14 +809,17 @@ class leganto {
             }
 
             if (!empty($citation->secondary_type->desc)) {
-                $citation->resourcetype = html_writer::span($citation->secondary_type->desc, 'citationresourcetype');
+                $citation->resourcetype = html_writer::span(
+                    $citation->secondary_type->desc,
+                    'citationresourcetype badge text-bg-primary'
+                );
             }
 
             if (!empty($citation->citation_tags->citation_tag)) {
                 $citation->tags = [];
                 foreach ($citation->citation_tags->citation_tag as $tag) {
                     if (!empty($tag->type->value) && $tag->type->value == 'PUBLIC' && !empty($tag->value->desc)) {
-                        $citation->tags[] = html_writer::span($tag->value->desc, 'citationtag');
+                        $citation->tags[] = html_writer::span($tag->value->desc, 'citationtag badge text-bg-secondary');
                     }
                 }
             }
@@ -831,7 +834,7 @@ class leganto {
                 $buttonaction = new popup_action('click', $buttonhref, 'popup', ['width' => 1024, 'height' => 768]);
                 // The URL in the popup_action object is encoded, but needs to be un-encoded!
                 $buttonaction->jsfunctionargs['url'] = $buttonhref;
-                $buttonattributes = ['class' => 'citationsource', 'title' => $title];
+                $buttonattributes = ['class' => 'citationsource btn btn-secondary', 'title' => $title];
                 $citation->source = $OUTPUT->action_link($buttonhref, $buttonlabel, $buttonaction, $buttonattributes);
             }
 

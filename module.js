@@ -86,14 +86,6 @@ M.mod_leganto.initList = function (Y, cmid, url, expanded, desc) {
                 var list = Y.one(listid),
                     arrow = Y.one(arrowid);
 
-                // Add a JavaScript loading icon.
-                var spinner = M.util.add_spinner(Y, arrow);
-                spinner.removeClass('iconsmall');
-                spinner.setStyle('position', 'static');
-
-                // Display the JS loading icon.
-                spinner.show();
-
                 if (arrow.hasClass('collapsed')) {
                     // Send AJAX request for view.php (to trigger log/completion events).
                     var httpRequest = new XMLHttpRequest();
@@ -112,8 +104,6 @@ M.mod_leganto.initList = function (Y, cmid, url, expanded, desc) {
                                 // If all is well, expand the list.
                                 list.show('slideFadeIn');
                                 arrow.removeClass('collapsed');
-                                // Hide the JS loading icon.
-                                spinner.hide();
                             }
                         }
                     };
@@ -123,8 +113,6 @@ M.mod_leganto.initList = function (Y, cmid, url, expanded, desc) {
                 } else {
                     list.hide('slideFadeOut');
                     arrow.addClass('collapsed');
-                    // Hide the JS loading icon.
-                    spinner.hide();
                 }
             }
 

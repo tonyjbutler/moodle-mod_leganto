@@ -232,7 +232,7 @@ function leganto_cm_info_dynamic(cm_info $cm) {
         $cm->set_on_click('return false;');
 
         // Display a visual cue to users that clicking the link toggles visibility.
-        $showhidearrow = html_writer::div('', 'showhidearrow', ['id' => 'showhide-' . $cm->id]);
+        $showhidearrow = html_writer::span('', 'showhidearrow fa fa-chevron-down fa-fw', ['id' => 'showhide-' . $cm->id]);
         $linkattributes = [
             'onclick' => 'return false;',
             'title'   => get_string('showhide', 'leganto'),
